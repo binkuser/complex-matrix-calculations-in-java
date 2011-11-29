@@ -43,7 +43,7 @@ public class ComplexMatrixEnhanced extends ComplexMatrix {
 	
 	/**
 	 * Prints the contents of a {@link ComnplexMatrix} in a readable format to the console.
-	 * @param z
+	 * @param z {@link ComplexMatrix}
 	 */
 	public static void printComplexMatrix(ComplexMatrix z) {
 		System.out.println(Arrays.deepToString(z.getArray()));
