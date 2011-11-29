@@ -1,6 +1,13 @@
 package testjes;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
+
+import javax.swing.JOptionPane;
 
 import flanagan.complex.Complex;
 import flanagan.complex.ComplexMatrix;
@@ -76,10 +83,27 @@ public class ComplexMatrixEnhanced extends ComplexMatrix {
 		System.out.println(Arrays.deepToString(v));
 	}
 	
+	public static void exportVectorToFile(Complex[] v) {
+	String s = Arrays.deepToString(v);
+	BufferedWriter outFile;
+
+	try {
+		
+		outFile = new BufferedWriter(new FileWriter("output.txt"));
+		outFile.write(s);
+		outFile.close();	   
+	}
+	catch (IOException e) {
+		 JOptionPane.showMessageDialog(null, "File error: " + e.toString());
+	}
+	
+	}
+	
 	public static void main(String[] args) {
 		ComplexMatrixEnhanced mm = new ComplexMatrixEnhanced("input.txt");
 		mm.printComplexMatrixEnhanced();
 		ComplexMatrixEnhanced.printComplexVector(mm.getSolutionVector());
+		ComplexMatrixEnhanced.exportVectorToFile(mm.getSolutionVector());
 		
 }
 }
