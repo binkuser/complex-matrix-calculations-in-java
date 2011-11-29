@@ -11,6 +11,10 @@ import flanagan.complex.Complex;
 import flanagan.complex.ComplexMatrix;
 
 
+/**
+ * @author Gérard Binkhorst
+ *
+ */
 public class CMatrixfromFile {
 	
 	private String[][] matrix;
