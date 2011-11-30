@@ -1,8 +1,6 @@
 package testjes;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
@@ -45,7 +43,11 @@ public class ComplexMatrixEnhanced extends ComplexMatrix {
 	 * Prints the contents of a {@link ComnplexMatrixEnhanced} in a readable format to the console.
 	 */
 	public void printComplexMatrixEnhanced() {
-		System.out.println(Arrays.deepToString(this.getArray()));
+		String s = Arrays.deepToString(this.getArray());
+		s = s.replaceAll("\\], \\[", "\n");
+		s = s.replaceAll("\\[", "");
+		s = s.replaceAll("\\]", "");
+		System.out.println(s);
 	}
 	
 	/**
@@ -53,7 +55,11 @@ public class ComplexMatrixEnhanced extends ComplexMatrix {
 	 * @param z {@link ComplexMatrix}
 	 */
 	public static void printComplexMatrix(ComplexMatrix z) {
-		System.out.println(Arrays.deepToString(z.getArray()));
+		String s = Arrays.deepToString(z.getArray());
+		s = s.replaceAll("\\], \\[", "\n");
+		s = s.replaceAll("\\[", "");
+		s = s.replaceAll("\\]", "");
+		System.out.println(s);
 	}
 	
 	public int getMaxColnumber() {
@@ -80,12 +86,19 @@ public class ComplexMatrixEnhanced extends ComplexMatrix {
 	}
 	
 	public static void printComplexVector(Complex[] v) {
-		System.out.println(Arrays.deepToString(v));
+		String s = Arrays.deepToString(v);
+		s = s.replaceAll(", ", "\n");
+		s = s.replaceAll("\\[", "");
+		s = s.replaceAll("\\]", "");
+		System.out.println(s);
 	}
 	
 	public static void exportVectorToFile(Complex[] v) {
-	String s = Arrays.deepToString(v);
-	BufferedWriter outFile;
+		String s = Arrays.deepToString(v);
+		s = s.replaceAll(", ", "\n");
+		s = s.replaceAll("\\[", "");
+		s = s.replaceAll("\\]", "");
+		BufferedWriter outFile;
 
 	try {
 		
@@ -101,9 +114,12 @@ public class ComplexMatrixEnhanced extends ComplexMatrix {
 	
 	public static void main(String[] args) {
 		ComplexMatrixEnhanced mm = new ComplexMatrixEnhanced("input.txt");
+		System.out.println("the complex input matrix read from file input.txt (first column is complex vector, other columns represent complex coefficients):\n");
 		mm.printComplexMatrixEnhanced();
-		ComplexMatrixEnhanced.printComplexVector(mm.getSolutionVector());
-		ComplexMatrixEnhanced.exportVectorToFile(mm.getSolutionVector());
+		System.out.println("\nthe complex solution vector written to file output.txt:\n");
+		Complex[] sv = mm.getSolutionVector();
+		ComplexMatrixEnhanced.printComplexVector(sv);
+		ComplexMatrixEnhanced.exportVectorToFile(sv);
 		
 }
 }
