@@ -5,11 +5,10 @@
 Add your content here.
 
 {{{
-and this is code
-
 public static void main(String[] args) {
 		ComplexMatrixEnhanced mm = new ComplexMatrixEnhanced("input.txt");
-		System.out.println("the complex input matrix read from file input.txt (first column is complex vector, other columns represent complex coefficients):\n");
+		System.out.println("the complex input matrix read from file input.txt (first column " +
+							"is complex vector, other columns represent complex coefficients):\n");
 		mm.printComplexMatrixEnhanced();
 		System.out.println("\nthe complex solution vector written to file output.txt:\n");
 		Complex[] sv = mm.getSolutionVector();
