@@ -16,7 +16,7 @@ import flanagan.complex.ComplexMatrix;
  * @since 2011-11-25
  */
 public class ComplexMatrixEnhanced extends ComplexMatrix {
-
+	private static String eol = System.getProperty( "line.separator" );
 	/**
 	 * A {@link ComplexMatrix} which may be filled with the contents of a local text file containing complex elements.
 	 * @param file {@link String}
@@ -95,13 +95,12 @@ public class ComplexMatrixEnhanced extends ComplexMatrix {
 	
 	public static void exportVectorToFile(Complex[] v) {
 		String s = Arrays.deepToString(v);
-		s = s.replaceAll(", ", "\n");
+		s = s.replaceAll(", ", eol);
 		s = s.replaceAll("\\[", "");
 		s = s.replaceAll("\\]", "");
-		BufferedWriter outFile;
 
 	try {
-		
+		BufferedWriter outFile;
 		outFile = new BufferedWriter(new FileWriter("output.txt"));
 		outFile.write(s);
 		outFile.close();	   
@@ -112,14 +111,21 @@ public class ComplexMatrixEnhanced extends ComplexMatrix {
 	
 	}
 	
-	public static void main(String[] args) {
+	public static void runStandard()
+	{
 		ComplexMatrixEnhanced mm = new ComplexMatrixEnhanced("input.txt");
-		System.out.println("the complex input matrix read from file input.txt (first column is complex vector, other columns represent complex coefficients):\n");
+		System.out.println("the complex input matrix read from file input.txt (first column " +
+							"is complex vector, other columns represent " +
+							"complex coefficients):\n");
 		mm.printComplexMatrixEnhanced();
 		System.out.println("\nthe complex solution vector written to file output.txt:\n");
 		Complex[] sv = mm.getSolutionVector();
 		ComplexMatrixEnhanced.printComplexVector(sv);
 		ComplexMatrixEnhanced.exportVectorToFile(sv);
+	}
+	
+	public static void main(String[] args) {
+		runStandard();
 		
 }
 }
