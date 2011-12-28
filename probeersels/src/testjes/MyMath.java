@@ -27,8 +27,8 @@ public class MyMath {
      * @param x Argument
      * @return arsinh(x)
      */
-    public static double arsinh(final double x) {
-        if(x >= 1  ||  x <= -1)
+    public static double arsinh_alternative(final double x) {
+        if(x >= 1  ||  x <= -1) //precision can be set, but only applicable for x between -1 and 1
             throw new IllegalArgumentException("arsinh undefined for" + x);
         int n = 1;
         double an = x;
@@ -41,4 +41,16 @@ public class MyMath {
         }
         return sn;
     }
+    
+    public static double arsinh(final double x) {
+    	//precision can´t be set, but applicable for full range of x
+    	double sn;
+        if(x <= -Math.sqrt(1+x*x))
+            throw new IllegalArgumentException("arsinh undefined for" + x);
+       sn = Math.log(x + Math.sqrt(x*x + 1));
+        
+        return sn;
+    }
+    
+    
 }
