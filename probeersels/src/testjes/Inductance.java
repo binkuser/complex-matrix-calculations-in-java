@@ -10,7 +10,7 @@ public class Inductance  {
  * @param length1  double: length in centimeter of one filament
  * @param length2 double : length in centimeter of other filament
  * @param spacing double : axial distance between filaments in centimeter
- * @param overlap double : distance between extremity of lenght1 from length2 in centimeter,<br>
+ * @param overlap double : distance between extremity of length1 from length2 in centimeter,<br>
  * if completely parallel spacing = -length1
  * @return mm double: mutual inductance in  micro Henry
  */
